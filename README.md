@@ -21,17 +21,3 @@ After it starts, open the local URL shown in the terminal. It is usually:
 ```txt
 http://localhost:5173
 ```
-
-## Other commands
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Check the code with ESLint:
-
-```bash
-npm run lint
-```
