@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import AdDisplay from "./components/AdDisplay";
+import LocationDetails from "./components/LocationDetails";
+import LocationList from "./components/LocationList";
 
 type Location = {
   id: number;
@@ -75,63 +77,12 @@ function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 text-white md:h-screen md:flex-row">
-      <div className="max-h-64 w-full overflow-y-scroll border-b border-slate-700 md:max-h-none md:w-1/4 md:border-b-0 md:border-r">
-        <h2 className="p-3 text-lg font-bold">Locations</h2>
-        {locations.map((location) => (
-          <div
-            key={location.id}
-            onClick={() => setSelectedLocation(location)}
-            className="cursor-pointer border-b border-slate-800 p-3 hover:bg-slate-800"
-          >
-            {location.name}
-          </div>
-        ))}
-      </div>
-
-      <div className="w-full overflow-y-auto p-6 md:w-1/2">
-        {selectedLocation ? (
-          <>
-            <div className="pb-5">
-              <div>
-                <img
-                  className="w-full rounded-lg"
-                  src={selectedLocation.banner_img}
-                  alt={selectedLocation.name}
-                />
-              </div>
-            </div>
-
-            <div className="pb-5">
-              <div className="grid gap-4 sm:grid-cols-2 sm:items-center">
-                <div className="flex justify-center">
-                  <img
-                    className="w-24"
-                    src={selectedLocation.logo_img}
-                    alt={selectedLocation.name}
-                  />
-                </div>
-
-                <div className="flex justify-center">
-                  <h2>{selectedLocation.name}</h2>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-lg border border-slate-700 p-4">
-              <p>{selectedLocation.description}</p>
-              <br />
-              <p>{`${selectedLocation.address1}, ${selectedLocation.city}, ${selectedLocation.state}`}</p>
-              <br />
-              <p>{selectedLocation.hours}</p>
-              <br />
-              <p>{selectedLocation.url}</p>
-            </div>
-          </>
-        ) : (
-          <p>Select a location</p>
-        )}
-      </div>
-      <AdDisplay ad={currentAd} />
+      <LocationList
+        locations={locations}
+        setSelectedLocation={setSelectedLocation}
+      />
+      <LocationDetails selectedLocation={selectedLocation} />
+      <AdDisplay currentAd={currentAd} />
     </div>
   );
 }

@@ -3,22 +3,28 @@ type Ad = {
 };
 
 type AdDisplayProps = {
-  ad: Ad | undefined;
+  currentAd: Ad | undefined;
 };
 
-function AdDisplay({ ad }: AdDisplayProps) {
-  if (!ad) {
+function AdDisplay({ currentAd }: AdDisplayProps) {
+  if (!currentAd) {
     return null;
   }
 
-  const isVideo = ad.img_url.endsWith(".mp4");
+  const isVideo = currentAd.img_url.includes(".mp4");
 
   return (
     <div className="w-full border-t border-slate-700 bg-black md:w-1/4 md:border-l md:border-t-0">
       {isVideo ? (
-        <video src={ad.img_url} autoPlay muted loop className="w-full" />
+        <video
+          key={currentAd.img_url}
+          src={currentAd.img_url}
+          autoPlay
+          muted
+          className="w-full"
+        />
       ) : (
-        <img src={ad.img_url} alt="Advertisement" className="w-full" />
+        <img src={currentAd.img_url} className="w-full" />
       )}
     </div>
   );

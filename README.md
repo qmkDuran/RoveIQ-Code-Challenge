@@ -21,3 +21,16 @@ After it starts, open the local URL shown in the terminal. It is usually:
 ```txt
 http://localhost:5173
 ```
+
+## Challenge Checklist
+
+✅ React application  
+✅ TypeScript  
+✅ Data fetched from the provided API  
+✅ Three panel layout  
+✅ Click a location to display its details  
+✅ 10 second rotating ad slideshow  
+✅ Responsive layout  
+✅ Tailwind CSS  
+✅ Multiple meaningful Git commits  
+✅ README with setup instructions
